@@ -38,9 +38,12 @@ int selectDataNo(Product *p, int count){
 void saveData(Product p[], int count){
 	FILE* fp;
 
-	//중량 가격 제품명
 	fp= fopen("product.txt","wt");
-	
+	for(int i=0;i<count;i++){
+		if(p[i].price!=-1){
+			fprintf(fp,"%d %d %s\n",p[i].price,p[i].weight,p[i].name);
+		}
+	}
 	
 	fclose(fp);
 	printf("저장됨!\n");
